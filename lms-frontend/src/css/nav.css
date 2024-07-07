@@ -1,0 +1,16 @@
+/* src/css/Navbar.css */
+
+.navbar {
+    background-color: #343a40;
+    padding: 1rem;
+  }
+  
+  .navbar-brand, .nav-link {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    color: #ddd;
+  }
+  

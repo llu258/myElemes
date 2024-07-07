@@ -1,0 +1,11 @@
+
+{
+    "development": {
+      "username": "lms_user",
+      "password": "123456",
+      "database": "lms_db",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    }
+  }
+  

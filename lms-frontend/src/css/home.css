@@ -1,0 +1,15 @@
+/* src/css/Home.css */
+
+.container {
+    margin-top: 2rem;
+  }
+  
+  h1 {
+    color: #343a40;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
