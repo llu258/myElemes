@@ -3,7 +3,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const Grades = require('../models/Grades');
 const User = require('../models/User');
-
+const passport = require('../auth/passport');
 const router = express.Router();
 
 // Middleware to check for token and role
@@ -47,5 +47,6 @@ router.get('/', authenticateJWT, async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   });
+  
 
 module.exports = router;
