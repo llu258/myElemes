@@ -3,6 +3,8 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const passport = require('../auth/passport');
+
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid'); // UUID for unique student ID
 
