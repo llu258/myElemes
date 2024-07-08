@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/nav';
+import Nav from './components/nav';
 import Home from './pages/home';
 import Login from './pages/login';
 import Signup from './pages/signup';
@@ -12,7 +12,7 @@ import Grades from './pages/grades';
 function App() {
   return (
     <div>
-      <Navbar />
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

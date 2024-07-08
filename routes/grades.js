@@ -1,35 +1,51 @@
 // routes/grades.js
-
 const express = require('express');
-const passport = require('passport');
-const Grade = require('../models/Grades');
+const jwt = require('jsonwebtoken');
+const Grades = require('../models/Grades');
 const User = require('../models/User');
+
 const router = express.Router();
 
-// Middleware to protect routes
-const authenticate = passport.authenticate('jwt', { session: false });
+// Middleware to check for token and role
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return res.status(401).json({ error: 'Unauthorized' });
 
-// Submit a grade (for teachers)
-router.post('/', authenticate, async (req, res) => {
-    if (req.user.role !== 'teacher') return res.status(403).json({ error: 'Forbidden' });
-    const { studentId, grade } = req.body;
-    try {
-        const newGrade = await Grade.create({ studentId, grade });
-        res.json(newGrade);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
+    const token = authHeader.split(' ')[1];
+    jwt.verify(token, 'your_jwt_secret', (err, decoded) => {
+        if (err) return res.status(403).json({ error: 'Forbidden' });
+        req.user = decoded;
+        next();
+    });
+};
 
-// View grades (for students and analysts)
-router.get('/', authenticate, async (req, res) => {
+// Submit a grade for a student
+router.post('/', authenticateJWT, async (req, res) => {
+    if (req.user.role !== 'teacher') return res.status(403).json({ error: 'Access denied' });
+  
+    const { studentId, subject, grade } = req.body;
+  
     try {
-        const query = req.user.role === 'admin' ? {} : { studentId: req.user.id };
-        const grades = await Grade.findAll({ where: query });
-        res.json(grades);
+      const student = await User.findOne({ where: { studentId } });
+      if (!student) return res.status(404).json({ error: 'Student not found' });
+  
+      const newGrade = await Grades.create({ studentId, subject, grade });
+      res.json(newGrade);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+      res.status(400).json({ error: error.message });
     }
-});
+  });
+
+// Get all grades for the logged-in student
+router.get('/', authenticateJWT, async (req, res) => {
+    if (req.user.role !== 'student') return res.status(403).json({ error: 'Access denied' });
+  
+    try {
+      const grades = await Grades.findAll({ where: { studentId: req.user.studentId } });
+      res.json(grades);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
 
 module.exports = router;

@@ -4,8 +4,8 @@ import "../css/home.css";
 function Home() {
   return (
     <div className="container">
-      <h1>Welcome to the LMS</h1>
-      <p>This is a primitive Learning Management System.</p>
+      <h1>Welcome to myElemes</h1>
+      <p>This is a Learning Management System.</p>
     </div>
   );
 }

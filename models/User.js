@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config'); 
+const sequelize = require('../config/database'); 
 
 const User = sequelize.define('User', {
     name: {
@@ -8,21 +8,27 @@ const User = sequelize.define('User', {
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false,        //email cannot be NULL
-        unique: true           //email must be unique
+        allowNull: false,        
     },
     password: {
         type: DataTypes.STRING,  
-        allowNull: false            //password cannot be NULL
+        allowNull: false            
     },
     role: {
         type: DataTypes.ENUM('student', 'teacher', 'admin'), 
         allowNull: false
     },
+    studentId: {
+        type: DataTypes.STRING,
+        allowNull: true, // Nullable for non-student roles
+        unique: true,
+    },
     createdAt: {
         type: DataTypes.DATE,
         defaultValue: Sequelize.NOW
-    },
+        }
+    }, {
+        tableName: 'Users'
 });
 
 (async () => {

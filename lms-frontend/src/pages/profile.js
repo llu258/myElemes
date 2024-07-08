@@ -1,5 +1,3 @@
-// src/pages/Profile.js
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../css/profile.css';
@@ -12,7 +10,7 @@ function Profile() {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get('/profile', {
+          const response = await axios.get('http://localhost:3001/profile', {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(response.data);
@@ -32,6 +30,9 @@ function Profile() {
       <p><strong>Name:</strong> {user.name}</p>
       <p><strong>Email:</strong> {user.email}</p>
       <p><strong>Role:</strong> {user.role}</p>
+      {user.role === 'student' && (
+        <p><strong>Student ID:</strong> {user.studentId}</p>
+      )}
     </div>
   );
 }

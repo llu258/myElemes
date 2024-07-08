@@ -1,5 +1,4 @@
 // src/pages/Signup.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../css/signup.css";
@@ -9,14 +8,17 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('student');
+  const [message, setMessage] = useState(null); // State to store success/error message
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/signup', { name, email, password, role });
+      const response = await axios.post('http://localhost:3001/auth/signup', { name, email, password, role });
+      setMessage({ type: 'success', text: 'Signup successful!' }); // Set success message
       console.log('Signup successful:', response.data);
     } catch (error) {
-      console.error('Signup error:', error.response.data);
+      setMessage({ type: 'error', text: error.response ? error.response.data : error.message }); // Set error message
+      console.error('Signup error:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -46,6 +48,11 @@ function Signup() {
         </div>
         <button type="submit" className="btn btn-primary">Sign Up</button>
       </form>
+      {message && (
+        <div className={`alert ${message.type === 'success' ? 'alert-success' : 'alert-danger'}`} role="alert">
+          {message.text}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,8 +1,7 @@
 // src/pages/Login.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../css/login.css';
+import "../css/login.css";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -11,11 +10,13 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/login', { email, password });
-      localStorage.setItem('token', response.data.token);
+      const response = await axios.post('http://localhost:3001/auth/login', { email, password });
       console.log('Login successful:', response.data);
+      // Save the token or handle successful login
+      localStorage.setItem('token', response.data.token);
+      window.location.href = '/profile';    // Redirect to profile page
     } catch (error) {
-      console.error('Login error:', error.response.data);
+      console.error('Login error:', error.response ? error.response.data : error.message);
     }
   };
 
