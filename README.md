@@ -14,11 +14,19 @@ This project aims to create a comprehensive LMS that facilitates educational pro
 - **Frontend**: React
 - **Database**: PostgreSQL
 
+## Features
+- Role-based access control (for teachers and students)
+- User registration and login/logout
+- Profile viewing
+- Grades submission (for teachers) and tracking (for student)
+
 ## Current Progress
 
-The project is currently in its initial stages:
-- Basic frontend setup with home and other essential pages.
-- Backend development in progress to integrate functionality such as user authentication, course management, and grade tracking.
+The overall frontend is subject for adjustment as well follows:
+- Alert messages: "Student not found" for example
+- Security measures (privacy)
+- Additional access control for admin/analyst
+- ...and more (based on my preference)
 
 ## Installation
 
