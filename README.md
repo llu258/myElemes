@@ -1,8 +1,8 @@
-PLEASE READ. Given that the project is still in progress, it’s important to recognize that adjustments may be necessary due to the ongoing development and the possibility of encountering errors. Currently all files are in the master repository and looking to merge with the main soon as possible. Thanks for the support.
+PLEASE READ. Not recommended yet for use unless you can fix the vulnerabilities:) Given that the project is still in progress, it’s important to recognize that adjustments may be necessary due to the ongoing development and the possibility of encountering errors. Currently all files are in the master repository and looking to merge with the main soon as possible. Thanks for the support.
 
 # myElemes: Learning Management System (LMS) Project
 
-Welcome to the Learning Management System (LMS) project repository. This system is designed as part of an application for a tech fellowship, demonstrating foundational skills in web development using Express, Node.js, React, and PostgreSQL.
+Check the message above this section for urgent read, thanks for stopping by :) Welcome to the simple Learning Management System (LMS) project repository. This system is designed as part of my application for a tech fellowship, demonstrating foundational skills in web development using Express, Node.js, React, and PostgreSQL.
 
 ## Overview
 
