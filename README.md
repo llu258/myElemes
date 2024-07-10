@@ -1,4 +1,4 @@
-PLEASE READ. Not recommended yet for use unless you can fix the vulnerabilities:) Given that the project is still in progress, it’s important to recognize that adjustments may be necessary due to the ongoing development and the possibility of encountering errors. Currently all files are in the master repository and looking to merge with the main soon as possible. Thanks for the support.
+**PLEASE READ.** Not recommended yet for use unless you can fix the vulnerabilities:) Given that the project is still in progress, it’s important to recognize that adjustments may be necessary due to the ongoing development and the possibility of encountering errors. Currently all files are in the master repository and looking to merge with the main soon as possible. Thanks for the support.
 
 # myElemes: Learning Management System (LMS) Project
 
