@@ -37,11 +37,7 @@ To run the project locally, follow these steps:
    ```bash
    npm install
    ```
-4. Set up the database
-   ```bash
-   npx sequelize-cli db:migrate
-   ```
-5. Start the development server:
+4. Start the development server:
    ```bash
    npm start
    ```
