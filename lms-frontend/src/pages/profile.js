@@ -4,6 +4,7 @@ import '../css/profile.css';
 
 function Profile() {
   const [user, setUser] = useState(null);
+  const [grades, setGrades] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -19,20 +20,38 @@ function Profile() {
         }
       }
     };
+
+    const fetchGrades = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const response = await axios.get('http://localhost:3001/grades', {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          setGrades(response.data);
+        } catch (error) {
+          console.error('Grades fetch error:', error.response.data);
+        }
+      }
+    };
+
     fetchUser();
+    fetchGrades();
   }, []);
 
   if (!user) return <div>Loading...</div>;
 
   return (
     <div className="container">
-      <h2>Profile</h2>
-      <p><strong>Name:</strong> {user.name}</p>
-      <p><strong>Email:</strong> {user.email}</p>
-      <p><strong>Role:</strong> {user.role}</p>
-      {user.role === 'student' && (
-        <p><strong>Student ID:</strong> {user.studentId}</p>
-      )}
+
+        <h2>Profile</h2>
+        <p><strong>Name:</strong> {user.name}</p>
+        <p><strong>Email:</strong> {user.email}</p>
+        <p><strong>Role:</strong> {user.role}</p>
+        {user.role === 'student' && (
+          <p><strong>Student ID:</strong> {user.studentId}</p>
+        )}
+        
     </div>
   );
 }

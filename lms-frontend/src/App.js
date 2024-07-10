@@ -1,26 +1,27 @@
-// src/App.js
-
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Nav from './components/nav';
-import Home from './pages/home';
+import { Route, Navigate, Routes } from 'react-router-dom';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Profile from './pages/profile';
 import Grades from './pages/grades';
+import Navbar from './components/nav';
+import Logout from './pages/logout';
 
 function App() {
+  const token = localStorage.getItem('token');
+
   return (
-    <div>
-      <Nav />
+    <>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/grades" element={<Grades />} />
+        <Route path="/login" element={token ? <Navigate to="/profile" /> : <Login />} />
+        <Route path="/signup" element={token ? <Navigate to="/profile" /> : <Signup />} />
+        <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />} />
+        <Route path="/grades" element={token ? <Grades /> : <Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

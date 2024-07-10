@@ -1,4 +1,3 @@
-// src/pages/Signup.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../css/signup.css";
@@ -8,17 +7,20 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('student');
-  const [message, setMessage] = useState(null); // State to store success/error message
+  const [message, setMessage] = useState(null);
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3001/auth/signup', { name, email, password, role });
-      setMessage({ type: 'success', text: 'Signup successful!' }); // Set success message
+      setMessage({ type: 'success', text: 'Signup successful!' });
       console.log('Signup successful:', response.data);
     } catch (error) {
-      setMessage({ type: 'error', text: error.response ? error.response.data : error.message }); // Set error message
-      console.error('Signup error:', error.response ? error.response.data : error.message);
+      const errorMessage = error.response && error.response.data && error.response.data.error 
+                           ? error.response.data.error 
+                           : error.message;
+      setMessage({ type: 'error', text: errorMessage });
+      console.error('Signup error:', errorMessage);
     }
   };
 
