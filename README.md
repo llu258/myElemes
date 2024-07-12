@@ -28,6 +28,22 @@ The overall frontend is subject for adjustment as well follows:
 - Additional access control for admin/analyst
 - ...and more (based on my preference)
 
+## Known Vulnerabilities
+
+As of July 7, 2024, as stated some vulnerabilities exist in this project as follows:
+
+1. **nth-check (High Severity)**:
+   - Vulnerable versions: <2.0.1
+   - Description: Inefficient Regular Expression Complexity
+   - More info: [GitHub Advisory](https://github.com/advisories/GHSA-rp65-9cf3-cjxr)
+   - Status: Pending update. Will be addressed in the next major release update.
+
+2. **postcss (Moderate Severity)**:
+   - Vulnerable versions: <8.4.31
+   - Description: PostCSS line return parsing error
+   - More info: [GitHub Advisory](https://github.com/advisories/GHSA-7fh5-64p2-3v2j)
+   - Status: Pending update. Testing required for compatibility with existing setup.
+
 ## Installation
 
 To run the project locally, follow these steps:
