@@ -22,6 +22,11 @@ This project aims to create a comprehensive LMS that facilitates educational pro
 
 ## Current Progress
 
+Roles:
+- Teacher: User can input grades for student comprising of StudentID, Subject, Quantified Grade.
+- Student: User can fetch grades
+- Admin: User can see activity and overall data analysis for fetched grades
+
 The overall frontend is subject for adjustment as well follows:
 - Alert messages: "Student not found" for example
 - Security measures (privacy)
