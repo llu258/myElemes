@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../css/signup.css";
+import { Link } from 'react-router-dom';
 
 function Signup() {
   const [name, setName] = useState('');
@@ -26,6 +27,8 @@ function Signup() {
 
   return (
     <div className="container">
+      <h1>Welcome to myElemes</h1>
+      <h3>A learning management system</h3>&nbsp;
       <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
         <div className="form-group">
@@ -50,6 +53,7 @@ function Signup() {
         </div>
         <button type="submit" className="btn btn-primary">Sign Up</button>
       </form>
+      <p>Already have an account? <Link to="/login">Log in</Link></p> 
       {message && (
         <div className={`alert ${message.type === 'success' ? 'alert-success' : 'alert-danger'}`} role="alert">
           {message.text}

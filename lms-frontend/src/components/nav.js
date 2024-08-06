@@ -7,9 +7,9 @@ import '../css/nav.css';
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg">
-      <Link className="navbar-brand" to="/">LMS</Link>
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav mr-auto">
+      <Link className="navbar-brand" to="/">myElemes</Link>
+      <div className="navbar-collapse">
+        <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
           </li>

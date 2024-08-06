@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const sequelize = require('./config/database');
 const cors = require('cors');
 const User = require('./models/User');
-
+const adminRoutes = require('./routes/admin')
 const app = express();
 
 // Middleware to parse JSON bodies
@@ -23,6 +23,8 @@ app.use(cors());
 app.use('/auth', require('./routes/auth'));
 // Use the grades routes
 app.use('/grades', require('./routes/grades'));
+//Use the admin routes
+app.use('/admin', adminRoutes);
 
 // Profile route
 app.get('/profile', (req, res) => {
