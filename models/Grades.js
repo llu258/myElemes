@@ -26,4 +26,6 @@ const Grades = sequelize.define('Grades', {
   },
 });
 
+Grades.belongsTo(User, { foreignKey: 'studentId', targetKey: 'studentId' });
+
 module.exports = Grades;

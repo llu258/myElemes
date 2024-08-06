@@ -31,6 +31,8 @@ const User = sequelize.define('User', {
         tableName: 'Users'
 });
 
+//User.hasMany(grades, { foreignKey: 'studentId', sourceKey: 'studentId' }); //Debug log
+
 (async () => {
     await sequelize.sync();
     console.log('User model synced with the database');
