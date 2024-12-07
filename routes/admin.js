@@ -34,14 +34,17 @@ router.get('/', authenticateJWT, checkAdmin, async (req, res) => {
   }
 });
 
-router.get('/logs', authenticateJWT, checkAdmin, async (req, res) => {
+router.get('/logs', async (req, res) => {
   try {
     const logs = await Log.findAll();
     res.json(logs);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error fetching logs:', error); // Log the error details
+    res.status(500).json({ error: 'Failed to fetch logs' });
   }
 });
+
+
 
 router.post('/', authenticateJWT, checkAdmin, async (req, res) => {
   const { name, email, password, role } = req.body;
