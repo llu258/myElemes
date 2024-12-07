@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/database'); // Assuming you have a database config file
 
 const Log = sequelize.define('Log', {
   id: {
@@ -13,11 +13,12 @@ const Log = sequelize.define('Log', {
   },
   timestamp: {
     type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
     allowNull: false,
-    defaultValue: DataTypes.NOW, // Automatically set timestamp to the current date and time
   },
 }, {
-  sequelize,
-  modelName: 'Log',
+  timestamps: false,
+  tableName: 'Logs',
 });
+
 module.exports = Log;
